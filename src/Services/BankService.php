@@ -24,12 +24,12 @@ class BankService
             $payload = $response->json();
 
             return collect($payload['data'] ?? [])->map(fn ($bank) => [
-                'id'         => $bank['id'],
-                'code'       => $bank['code'],
-                'name'       => $bank['name'],
+                'id' => $bank['id'],
+                'code' => $bank['code'],
+                'name' => $bank['name'],
                 'short_name' => $bank['short_name'],
-                'bin'        => $bank['bin'],
-                'logo'       => $bank['logo'],
+                'bin' => $bank['bin'],
+                'logo' => $bank['logo'],
                 'swift_code' => $bank['swift_code'],
             ])->values()->toArray();
         });
@@ -37,9 +37,6 @@ class BankService
 
     /**
      * Get bank detail by code or short name
-     *
-     * @param string $key
-     * @return array
      */
     public function findBankByKey(string $key): ?array
     {

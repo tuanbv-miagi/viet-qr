@@ -10,13 +10,8 @@ class VietQr
     /**
      * Render URL payment following VietQR Quicklink format
      *
-     * @param string $bankId
-     * @param string $accountNo
-     * @param mixed $template
-     * @param mixed $amount
-     * @param string $addInfo
-     * @param string $accountName
-     * @return string
+     * @param  mixed  $template
+     * @param  mixed  $amount
      */
     public function getUrlPayment(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): string
     {
@@ -46,18 +41,13 @@ class VietQr
     /**
      * Render QR code view
      *
-     * @param string $bankId
-     * @param string $accountNo
-     * @param mixed $template
-     * @param mixed $amount
-     * @param string $addInfo
-     * @param string $accountName
-     * @return View
+     * @param  mixed  $template
+     * @param  mixed  $amount
      */
-    public function renderQrCode(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = '', string $oderId): View
+    public function renderQrCode(string $bankId, string $accountNo, ?string $template, ?int $amount, string $addInfo, string $accountName, string $oderId): View
     {
         $url = $this->getUrlPayment($bankId, $accountNo, $template, $amount, $addInfo, $accountName);
-        $bank = (new BankService())->findBankByKey($bankId);
+        $bank = (new BankService)->findBankByKey($bankId);
 
         return view('vietqr::viet-qr', compact('url', 'accountName', 'amount', 'addInfo', 'accountNo', 'bank', 'oderId'));
     }
