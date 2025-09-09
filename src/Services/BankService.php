@@ -11,8 +11,6 @@ class BankService
 
     /**
      * Get all banks from VietQR API
-     *
-     * @return array
      */
     public function getAllBank(): array
     {
