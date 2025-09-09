@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace miagi\VietQr\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class VietQrCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'vietqr';
 
     public $description = 'My command';
 
