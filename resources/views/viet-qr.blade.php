@@ -1,5 +1,5 @@
 <div class="vietqr-container" style="text-align: center;">
-    <img src="{{ $Url }}" alt="VietQR" style="max-width: 300px;">
+    <img src="{{ $url }}" alt="VietQR" style="max-width: 300px;">
     @if(!empty($accountName))
         <p><strong>{{ $accountName }}</strong></p>
     @endif
