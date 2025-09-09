@@ -1,6 +1,6 @@
 <?php
 
-namespace Miagi\Payment\Services;
+namespace miagi\VietQr\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -14,7 +14,7 @@ class BankService
      *
      * @return array
      */
-    public function allBanks(): array
+    public function getAllBank(): array
     {
         return Cache::remember('vietqr.banks', 86400, function () {
             $response = Http::get($this->endpoint);
@@ -29,35 +29,35 @@ class BankService
                 'id'         => $bank['id'],
                 'code'       => $bank['code'],
                 'name'       => $bank['name'],
-                'short_name' => $bank['shortName'],
+                'short_name' => $bank['short_name'],
                 'bin'        => $bank['bin'],
                 'logo'       => $bank['logo'],
-                'swift_code' => $bank['swiftCode'],
+                'swift_code' => $bank['swift_code'],
             ])->values()->toArray();
         });
     }
 
     /**
-     * Get bank detail by code
+     * Get bank detail by code or short name
      *
-     * @param string $code
+     * @param string $key
      * @return array
      */
-    public function findByCode(string $code): ?array
+    public function findBankByKey(string $key): ?array
     {
-        return collect($this->allBanks())
-            ->firstWhere('code', strtoupper($code));
-    }
+        $banks = $this->getAllBank();
+        // find by code
+        $dataByCode = collect($banks)->firstWhere('code', $key);
+        if ($dataByCode) {
+            return $dataByCode;
+        }
 
-    /**
-     * Get bank detail by short name
-     *
-     * @param string $shortName
-     * @return array
-     */
-    public function findByShortName(string $shortName): ?array
-    {
-        return collect($this->allBanks())
-            ->firstWhere('shortName', $shortName);
+        // find by short_name
+        $dataByShort = collect($banks)->firstWhere('short_name', $key);
+        if ($dataByShort) {
+            return $dataByShort;
+        }
+
+        return [];
     }
 }

@@ -8,7 +8,7 @@
         <div style="display: grid; grid-template-columns: 15% 20% 25% 38%; grid-column-gap: 7px; margin-bottom: 25px; align-items: center;">
             <div style="text-align: center;">
                 <p>MÃ ĐƠN HÀNG</p>
-                <p><strong>#123</strong></p>
+                <p><strong>#{{ $oderId }}</strong></p>
             </div>
             <div style="text-align: center;">
                 <p>NGÀY</p>
@@ -57,7 +57,7 @@
             <div style="text-align: end; margin-right: 15px; font-size: 16px;">
                 <p><strong>Ngân hàng</strong></p>
             </div>
-            <p>{{ $bankName }}</p>
+            <p>{{ $bank['name'] ?? '' }}</p>
         </div>
         <div style="display: grid; grid-template-columns: 48% 48%; grid-column-gap: 5px;">
             <div style="text-align: end; margin-right: 15px; font-size: 16px;">

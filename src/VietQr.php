@@ -3,14 +3,20 @@
 namespace miagi\VietQr;
 
 use Illuminate\View\View;
+use miagi\VietQr\Services\BankService;
 
 class VietQr
 {
     /**
      * Render URL payment following VietQR Quicklink format
      *
-     * @param  mixed  $template
-     * @param  mixed  $amount
+     * @param string $bankId
+     * @param string $accountNo
+     * @param mixed $template
+     * @param mixed $amount
+     * @param string $addInfo
+     * @param string $accountName
+     * @return string
      */
     public function getUrlPayment(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): string
     {
@@ -40,22 +46,19 @@ class VietQr
     /**
      * Render QR code view
      *
-     * @param  mixed  $template
-     * @param  mixed  $amount
+     * @param string $bankId
+     * @param string $accountNo
+     * @param mixed $template
+     * @param mixed $amount
+     * @param string $addInfo
+     * @param string $accountName
+     * @return View
      */
-    public function renderQrCode(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): View
+    public function renderQrCode(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = '', string $oderId): View
     {
         $url = $this->getUrlPayment($bankId, $accountNo, $template, $amount, $addInfo, $accountName);
-        $bankName = '';
+        $bank = (new BankService())->findBankByKey($bankId);
 
-        return view('vietqr::viet-qr', compact('url', 'accountName', 'amount', 'addInfo', 'accountNo', 'bankName'));
+        return view('vietqr::viet-qr', compact('url', 'accountName', 'amount', 'addInfo', 'accountNo', 'bank', 'oderId'));
     }
-
-    // public function show(BankService $bankService, string $code)
-    // {
-    //     return response()->json([
-    //         'status' => 'success',
-    //         'data'   => $bankService->findByCode($code),
-    //     ]);
-    // }
 }
