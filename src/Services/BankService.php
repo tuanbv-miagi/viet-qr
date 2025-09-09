@@ -11,8 +11,6 @@ class BankService
 
     /**
      * Get all banks from VietQR API
-     *
-     * @return array
      */
     public function allBanks(): array
     {
@@ -26,12 +24,12 @@ class BankService
             $payload = $response->json();
 
             return collect($payload['data'] ?? [])->map(fn ($bank) => [
-                'id'         => $bank['id'],
-                'code'       => $bank['code'],
-                'name'       => $bank['name'],
+                'id' => $bank['id'],
+                'code' => $bank['code'],
+                'name' => $bank['name'],
                 'short_name' => $bank['shortName'],
-                'bin'        => $bank['bin'],
-                'logo'       => $bank['logo'],
+                'bin' => $bank['bin'],
+                'logo' => $bank['logo'],
                 'swift_code' => $bank['swiftCode'],
             ])->values()->toArray();
         });
@@ -39,9 +37,6 @@ class BankService
 
     /**
      * Get bank detail by code
-     *
-     * @param string $code
-     * @return array
      */
     public function findByCode(string $code): ?array
     {
@@ -51,9 +46,6 @@ class BankService
 
     /**
      * Get bank detail by short name
-     *
-     * @param string $shortName
-     * @return array
      */
     public function findByShortName(string $shortName): ?array
     {
