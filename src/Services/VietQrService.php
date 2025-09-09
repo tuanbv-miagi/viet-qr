@@ -9,18 +9,13 @@ class VietQrService
     /**
      * Render URL payment following VietQR Quicklink format
      *
-     * @param string $bankId
-     * @param string $accountNo
-     * @param mixed $template
-     * @param mixed $amount
-     * @param string $addInfo
-     * @param string $accountName
-     * @return string
+     * @param  mixed  $template
+     * @param  mixed  $amount
      */
     public function getUrlPayment(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): string
     {
         $base = rtrim(config('vietqr.quicklink_base'), '/');
-        $tpl  = $template ?: config('vietqr.default_template', 'compact');
+        $tpl = $template ?: config('vietqr.default_template', 'compact');
 
         $url = "{$base}/{$bankId}-{$accountNo}-{$tpl}.jpg";
 
@@ -35,8 +30,8 @@ class VietQrService
             $params['accountName'] = $accountName;
         }
 
-        if (!empty($params)) {
-            $url .= '?' . http_build_query($params);
+        if (! empty($params)) {
+            $url .= '?'.http_build_query($params);
         }
 
         return $url;
@@ -45,13 +40,8 @@ class VietQrService
     /**
      * Render QR code view
      *
-     * @param string $bankId
-     * @param string $accountNo
-     * @param mixed $template
-     * @param mixed $amount
-     * @param string $addInfo
-     * @param string $accountName
-     * @return View
+     * @param  mixed  $template
+     * @param  mixed  $amount
      */
     public function renderQrCode(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): View
     {

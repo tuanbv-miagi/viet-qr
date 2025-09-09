@@ -2,9 +2,9 @@
 
 namespace miagi\VietQr;
 
+use miagi\VietQr\Commands\VietQrCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use miagi\VietQr\Commands\VietQrCommand;
 
 class VietQrServiceProvider extends PackageServiceProvider
 {
