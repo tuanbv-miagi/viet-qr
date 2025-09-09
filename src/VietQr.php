@@ -46,7 +46,16 @@ class VietQr
     public function renderQrCode(string $bankId, string $accountNo, ?string $template = null, ?int $amount = null, string $addInfo = '', string $accountName = ''): View
     {
         $url = $this->getUrlPayment($bankId, $accountNo, $template, $amount, $addInfo, $accountName);
+        $bankName = '';
 
-        return view('vietqr::viet-qr', compact('url', 'accountName', 'amount', 'addInfo'));
+        return view('vietqr::viet-qr', compact('url', 'accountName', 'amount', 'addInfo', 'accountNo', 'bankName'));
     }
+
+    // public function show(BankService $bankService, string $code)
+    // {
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data'   => $bankService->findByCode($code),
+    //     ]);
+    // }
 }
