@@ -40,7 +40,7 @@
 
         <!-- Info bank -->
         <div class="text-center">
-            <p class="font-24">Thông tin chuyển khoản ngân hàng</p>
+            <p class="font-24 mt-20">Thông tin chuyển khoản ngân hàng</p>
             <p class="title-note">Vui lòng chuyển đúng nội dung {{ $addInfo }} để chúng tôi có thể xác nhận thanh toán</p>
         </div>
         <div class="bank-info">

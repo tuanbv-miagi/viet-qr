@@ -2,7 +2,7 @@
   width: 80%;
   margin: auto;
   line-height: 0.8;
-  max-width: 770px;
+  max-width: 830px;
   background: aliceblue;
   padding: 15px;
 }
@@ -37,4 +37,8 @@
   text-align: end;
   margin-right: 15px;
   font-size: 16px;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }
