@@ -54,9 +54,6 @@ class VietQr
 
     /**
      * Get bank name by bank id
-     *
-     * @param string $bankId
-     * @return string
      */
     public function getBankName(string $bankId): string
     {
