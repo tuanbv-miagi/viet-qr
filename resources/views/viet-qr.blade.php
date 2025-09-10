@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/vietqr/css/customer.css') }}">
 
 @if ($url)
-    <div class="container">
+    <div class="container-viet-qr">
         <!-- hearder -->
         <div class="viet-qr-header">
             <div class="text-center">
