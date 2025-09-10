@@ -2,9 +2,7 @@
     use Carbon\Carbon;
 @endphp
 
-<link rel="stylesheet" href="{{ \Illuminate\Support\Facades\File::exists(public_path('vendor/vietqr/css/customer.css'))
-    ? asset('vendor/vietqr/css/customer.css')
-    : asset(mix('css/customer.css', 'vendor/vietqr')) }}">
+<link rel="stylesheet" href="{{ asset('vendor/vietqr/css/customer.css') }}">
 
 @if ($url)
     <div class="container">

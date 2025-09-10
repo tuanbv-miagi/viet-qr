@@ -23,4 +23,11 @@ class VietQrServiceProvider extends PackageServiceProvider
             ->hasMigration('create_vietqr_table')
             ->hasCommand(VietQrCommand::class);
     }
+
+    public function bootingPackage(): void
+    {
+        $this->publishes([
+            __DIR__.'/../resources/dist' => public_path('vendor/vietqr'),
+        ], 'vietqr-assets');
+    }
 }
