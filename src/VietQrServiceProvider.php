@@ -19,6 +19,7 @@ class VietQrServiceProvider extends PackageServiceProvider
             ->name('vietqr')
             ->hasConfigFile()
             ->hasViews()
+            ->hasAssets()
             ->hasMigration('create_vietqr_table')
             ->hasCommand(VietQrCommand::class);
     }

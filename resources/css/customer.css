@@ -1,0 +1,40 @@
+.container {
+  width: 80%;
+  margin: auto;
+  line-height: 0.8;
+  max-width: 770px;
+  background: aliceblue;
+  padding: 15px;
+}
+
+.viet-qr-header {
+  display: grid;
+  grid-template-columns: 15% 20% 25% 38%;
+  grid-column-gap: 7px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.title-note {
+  color: red;
+}
+
+.bank-info {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-column-gap: 5px;
+}
+
+.title-header {
+  text-align: end;
+  margin-right: 15px;
+  font-size: 16px;
+}
