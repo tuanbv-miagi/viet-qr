@@ -59,7 +59,7 @@
             <div class="title-header">
                 <p><strong>Ngân hàng</strong></p>
             </div>
-            <p>{{ $bank['name'] ?? '' }}</p>
+            <p>{{ $bankName }}</p>
         </div>
         <div class="bank-info">
             <div class="title-header">
